@@ -11,11 +11,11 @@ public class PasswordController(IPasswordEncryptingService service):ControllerBa
 {
     private readonly IPasswordEncryptingService _passwordEncryptingService=service;
     [HttpPost]
-    public ActionResult<Password> Encrypt([FromBody] string password)
+    public ActionResult<Password> Encrypt([FromBody] BodyContent bodyContent)
     {
         try
         {
-            return Ok(_passwordEncryptingService.Encrypt(password));
+            return Ok(_passwordEncryptingService.Encrypt(bodyContent.OriginalPassword,bodyContent.Offset));
         }
         catch (Exception )
         {

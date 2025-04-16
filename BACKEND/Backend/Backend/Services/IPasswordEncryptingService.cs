@@ -4,5 +4,5 @@ namespace Backend.Services;
 
 public interface IPasswordEncryptingService
 {
-    Password Encrypt(string password);
+    Password Encrypt(string password,int offset);
 }
