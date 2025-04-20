@@ -29,6 +29,15 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                SpecialCase = true;
                i=password.Length; 
             }
+            else if(64<password[i] && 91 > password[i])
+            {
+                UpperCase = true;
+            }
+            else if (90<password[i]&&97>password[i])
+            {
+                SpecialCase = true;
+                i=password.Length;
+            }
 
         }
 
