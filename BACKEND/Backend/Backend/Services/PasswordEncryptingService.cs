@@ -18,8 +18,24 @@ public class PasswordEncryptingService:IPasswordEncryptingService
 
     private string CreateEncrypt(string password, int offset)
     {
+        bool SpecialCase = false;
+        bool UpperCase = false;
         
-        return password;
+        string newpass="";
+        for (int i = 0; i < password.Length; i++)
+        {
+            if (31 < password[i] && 64 > password[i])
+            {
+               SpecialCase = true;
+               i=password.Length; 
+            }
+
+        }
+
+
+
+
+        return newpass;
     }
 }
 
