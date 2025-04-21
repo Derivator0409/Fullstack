@@ -58,7 +58,7 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                     remainder = offset-full*26;
                     offset = remainder;
                 }
-                if (password[i] + offset < 122)
+                if (password[i] + offset < 123)
                 {
                     newpass+=(char)(password[i] + offset);
                 }
@@ -66,7 +66,7 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                 {
                     newpass+=(char)(password[i] + offset-26);
                 }
-            }else if (SpecialCase == false && UpperCase == true)
+            }else if (SpecialCase == false && UpperCase == true)//Nagy betű megjelenése
             {
                 if(offset>52 && i == 0)
                 {
@@ -83,13 +83,38 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                 {
                     if (password[i] + offset + 6 < 123)
                     {
+                        if (password[i] > 96 && password[i] < 123)
+                        {
+                            newpass+=(char)(password[i] + offset);
+                        }
+                        else
+                        {
+                            newpass+=(char)(password[i] + offset+6);
+                        }
+                    }
+                    else
+                    {
                         newpass+=(char)(password[i] + offset);
+
                     }
                 }
             }
-            else
+            else //speciális karakterek megjelnése
             {
-                        
+                if (offset > 94 && i == 0)
+                {
+                    full=offset/94;
+                    remainder = offset-full*94;
+                    offset = remainder;
+                }
+                if(password[i] + offset < 127)
+                {
+                    newpass+=(char)(password[i] + offset);
+                }
+                else
+                {
+                    newpass+=(char)(password[i] + offset-94);
+                }
             }
         }
         
