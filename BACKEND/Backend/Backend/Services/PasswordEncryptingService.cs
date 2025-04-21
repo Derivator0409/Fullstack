@@ -69,11 +69,23 @@ public class PasswordEncryptingService:IPasswordEncryptingService
             }else if (SpecialCase == false && UpperCase == true)
             {
                 if(offset>52 && i == 0)
-                    {
+                {
                     full=offset/52;
                     remainder = offset-full*52;
-                    offset = remainder;
+                    offset = remainder; 
+                }
+
+                if (password[i] + offset < 91)
+                {
+                    newpass+=(char)(password[i] + offset);
+                }
+                else
+                {
+                    if (password[i] + offset + 6 < 123)
+                    {
+                        newpass+=(char)(password[i] + offset);
                     }
+                }
             }
             else
             {
