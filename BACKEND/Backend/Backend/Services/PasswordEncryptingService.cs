@@ -9,15 +9,74 @@ public class PasswordEncryptingService:IPasswordEncryptingService
         return new Password()
         {
             OriginalPassword = password,
-                Complexity = 0,
+                Complexity = Complexity(password),
                 EncryptedPassword = CreateEncrypt(password, offset)
             
         };
     }
 
+    private int Complexity(string password)
+    {
+        bool SpecialCase = false;
+        bool UpperCase = false;
+        
+        for (int i = 0; i < password.Length; i++)
+        {
+            if (32 < password[i] && 65 > password[i])
+            {
+                SpecialCase = true;
+                i = password.Length;
+            }
+            else if (64 < password[i] && 91 > password[i])
+            {
+                UpperCase = true;
+            }
+            else if (90 < password[i] && 97 > password[i])
+            {
+                SpecialCase = true;
+                i = password.Length;
+            }
+            else if (122 < password[i])
+            {
+                SpecialCase = true;
+                i = password.Length;
+            }
+        }
+
+        int complexity = 0;
+        switch (SpecialCase)
+        {
+            case true:
+            {
+                complexity = (int)Math.Pow(94,password.Length);
+                break;
+            }
+            case false:
+            {
+                switch (UpperCase)
+                {
+                    case true:
+                        complexity = (int)Math.Pow(52,password.Length);
+                        break;
+                    
+                    case false:
+                        complexity = (int)Math.Pow(26,password.Length);
+                        break;
+                    
+                }
+                
+
+                break;
+            }
+        }
+        return complexity;   
+    }
+    
+    
 
     private string CreateEncrypt(string password, int offset)
     {
+        //32-től 126-ig
         bool SpecialCase = false;
         bool UpperCase = false;
         int full;
@@ -26,7 +85,7 @@ public class PasswordEncryptingService:IPasswordEncryptingService
         string newpass="";
         for (int i = 0; i < password.Length; i++)
         {
-            if (31 < password[i] && 64 > password[i])
+            if (32 < password[i] && 65 > password[i])
             {
                 SpecialCase = true;
                 i = password.Length;
@@ -86,7 +145,7 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                         if (password[i] > 96 && password[i] < 123)
                         {
                             newpass+=(char)(password[i] + offset);
-                        }
+                        }//csak kisbetűre való figyelés
                         else
                         {
                             newpass+=(char)(password[i] + offset+6);
@@ -94,7 +153,14 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                     }
                     else
                     {
-                        newpass+=(char)(password[i] + offset);
+                        if (password[i] + offset - 52 > 90 && password[i] + offset - 52 < 96)
+                        {
+                            newpass += (char)(password[i] + offset - 52 - 6);
+                        }
+                        else
+                        {
+                            newpass+=(char)(password[i] + offset - 52);
+                        }
 
                     }
                 }
