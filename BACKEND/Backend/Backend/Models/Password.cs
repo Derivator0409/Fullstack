@@ -6,5 +6,5 @@ public class Password
     
     public string EncryptedPassword { get; set; }
     
-    public int Complexity { get; set; }
+    public ulong Complexity { get; set; }
 }

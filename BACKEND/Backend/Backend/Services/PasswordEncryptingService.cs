@@ -15,7 +15,7 @@ public class PasswordEncryptingService:IPasswordEncryptingService
         };
     }
 
-    private int Complexity(string password)
+    private ulong Complexity(string password)
     {
         bool SpecialCase = false;
         bool UpperCase = false;
@@ -43,12 +43,12 @@ public class PasswordEncryptingService:IPasswordEncryptingService
             }
         }
 
-        int complexity = 0;
+        ulong complexity = 0;
         switch (SpecialCase)
         {
             case true:
             {
-                complexity = (int)Math.Pow(94,password.Length);
+                complexity = (ulong)Math.Pow(94,password.Length);
                 break;
             }
             case false:
@@ -56,11 +56,11 @@ public class PasswordEncryptingService:IPasswordEncryptingService
                 switch (UpperCase)
                 {
                     case true:
-                        complexity = (int)Math.Pow(52,password.Length);
+                        complexity = (ulong)Math.Pow(52,password.Length);
                         break;
                     
                     case false:
-                        complexity = (int)Math.Pow(26,password.Length);
+                        complexity = (ulong)Math.Pow(26,password.Length);
                         break;
                     
                 }
