@@ -11,7 +11,7 @@
     <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">        
         <div class="container">
-        <a  class="navbar-brand" href="#">Jelszókezelő</a>
+        <a  class="navbar-brand" href="/FRONTEND/index.html">Jelszókezelő</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,21 +32,34 @@
         <hr>
         <form class="row g-3">
           <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Titkosítandó jelszó">
+            <input type="text"   id="password" class="form-control" placeholder="Titkosítandó jelszó">
           </div>
           <div class="col-md-2">
-            <input type="number" class="form-control" placeholder="Jelszó eltolása">
+            <input type="number"  id="offset"  class="form-control" placeholder="Jelszó eltolása">
           </div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-warning">Titkosít</button>
+            <button type="button" onclick="submitPassword()"  class="btn btn-warning">Titkosít</button>
           </div>
         </form>
+        <div id="resultSection" class="container mt-4 d-none">
+          <p>Eredeti jelszó: <span id="originalPass"></span></p>
+          <p>Titkosított jelszó: <span id="encryptedPass"></span></p>
+          <p>Komplexitás: <span id="complexity"></span></p>
+          <p>Feltörési idő: <span id="time"></span> másodperc</p>
+          <div class="progress mx-auto position-relative" style="width: 75%; height: 24px;">
+            <div id="strengthBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+            <div id="strengthText" class="position-absolute top-50 start-50 translate-middle fw-bold" style="color: black;">
+              0%
+            </div>
+          </div>
+      
       </main>
 
    
-    <footer class="bg-dark text-white mt-4 p-4">
+    <footer class="bg-dark text-white mt-4 p-4 fixed-bottom">
     <p class="text-center">&copy; Szinger Pál Vilmos 2025</p>
     </footer>
 </div>
+<script src="/FRONTEND/js/app.js"></script>
 </body>
 </html>
