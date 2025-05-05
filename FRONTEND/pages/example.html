@@ -27,17 +27,41 @@
         </div>
     </div>
     </nav>
-<main>
-<h1 class="mb-3">Egyszerű bemutató a jelszókezelő használatához</h1>
-    <ol>
-        <li>Tölstd ki az input mezőket!</li>
-        <img class="img-fluid img-thumbnail my-3" src="">
-        <li>Nyomja meg a titkosítás gombot!</li>
-        <img class="img-fluid img-thumbnail my-3" src="">
-        <li>Nézd meg az eredményt!</li>
-        <img class="img-fluid img-thumbnail my-3" src="">
-    </ol>
-</main>
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+          <div class="card-body">
+            <main>
+              <h1 class="mb-4 text-primary">Egyszerű bemutató a jelszókezelő használatához</h1>
+    
+              <p class="mb-3">
+                A weboldal a jelszótitkosítást a <strong>Caesar rejtjellel</strong> végzi el. 
+                A jelszót a felhasználó által megadott értékkel (számmal) eltolja az angol ABC-ben.
+              </p>
+              <p class="mb-4">
+                A jelszó komplexitását és visszafejthetőségét befolyásolja, hogy milyen karaktereket tartalmaz:
+              </p>
+    
+              <ul class="mb-4">
+                <li>Ha csak kisbetű található benne, akkor csak <strong>26 karakter</strong> között mozgunk.</li>
+                <li>Nagybetűk esetén <strong>56 karakter</strong>.</li>
+                <li>Speciális karakterekkel együtt <strong>94 karakter</strong>.</li>
+              </ul>
+    
+              <h5 class="mb-3">Használati lépések:</h5>
+              <ol class="mb-3">
+                <li><strong> Töltsd ki az input mezőket!</strong></li>
+                <img class="img-fluid img-thumbnail my-3" src="/FRONTEND/assets/img/inputmezők.png" alt="Input mezők képe">
+                <li> <strong> Nyomja meg a titkosítás gombot!</strong></li>
+                <img class="img-fluid img-thumbnail my-3" src="/FRONTEND/assets/img/példaszöveg titkosítás elött.png" alt="Titkosítás gomb képe">
+                <li> <strong> Nézd meg az eredményt! </strong></li>
+                <img class="img-fluid img-thumbnail my-3" src="/FRONTEND/assets/img/példa titkosítása és eredménye.png" alt="Eredmény képe">
+              </ol>
+            </main>
+          </div>
+        </div>
+      </div>
+
 
    
     <footer class="bg-dark text-white mt-4 p-4 fixed-bottom">
