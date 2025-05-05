@@ -29,7 +29,7 @@ let options = {
       const strengthBar = document.querySelector('#strengthBar');
       const strengthText = document.querySelector('#strengthText'); 
 
-      let widthPercent = (time / 360000) * 100;
+      let widthPercent = (time / 3600000) * 100;
       widthPercent = Math.min(widthPercent, 100); 
       let percent = widthPercent.toFixed(5); 
 
