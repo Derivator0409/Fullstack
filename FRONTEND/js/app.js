@@ -21,7 +21,7 @@ let options = {
       document.querySelector('#complexity').textContent = response.complexity.toLocaleString();
   
       
-      const attemptsPerSecond = 1000000000;
+      const attemptsPerSecond = 2500000000;
       const time = response.complexity / attemptsPerSecond;
       document.querySelector('#time').textContent = time.toFixed(5);
   
@@ -37,7 +37,7 @@ let options = {
     let colorClass = 'bg-danger';
     if (time > 3600000) {
       colorClass = 'bg-success';
-    } else if (time > 6000) {
+    } else if (time > 600000) {
      colorClass = 'bg-warning';
     }
 
@@ -58,7 +58,4 @@ let options = {
 
 
 }
-
-
-
 
